@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 source $TIDEL_ROOT/libexec/helpers
 
-[ -d $TIDEL_PATH ] && warn_and_continue "Tidel is already initialized"
+if [ -d $TIDEL_PATH ] && [ -d $TIDEL_SCRIPTS_PATH ]; then
+  warn_and_continue "Tidel is already initialized"
+fi
 
-mkdir -p $TIDEL_PATH
-info "$TIDEL_PATH successfully created"
-mkdir -p $TIDEL_SCRIPTS_PATH
-info "$TIDEL_SCRIPTS_PATH successfully created"
+if [ ! -d $TIDEL_PATH ]; then
+  mkdir -p $TIDEL_PATH
+  info "$TIDEL_PATH successfully created"
+fi
+
+if [ ! -d $TIDEL_SCRIPTS_PATH ]; then
+  mkdir -p $TIDEL_SCRIPTS_PATH
+  info "$TIDEL_SCRIPTS_PATH successfully created"
+fi

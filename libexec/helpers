@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TIDEL_PATH="$HOME/.tidel"
-TIDEL_SAVED_COMMANDS_PATH="$TIDEL_PATH/commands"
+TIDEL_SCRIPTS_PATH="$TIDEL_PATH/scripts"
 
 function info() {
   echo -e "\033[0;32m[INFO] ${1}\033[0;39m"

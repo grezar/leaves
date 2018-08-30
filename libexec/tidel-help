@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Usage: tidel <command>
+
+Commands:
+   add        Add tidel script
+   edit       Edit tidel script
+   exec       Exec tidel script
+   remove     Remove tidel script
+   list       List tidel scripts
+   show       Show tidel script
+   version    Display tidel current version
+   help       Show tidel help
+"

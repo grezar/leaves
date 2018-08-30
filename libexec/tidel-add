@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+source $TIDEL_ROOT/libexec/helpers
+
+TIDEL_SCRIPT_NAME=$1
+TIDEL_SCRIPT_FILE=$TIDEL_SCRIPTS_PATH/$TIDEL_SCRIPT_NAME
+
+[ -z "$1" ] && error_and_exit "Please specify script name"
+[ ! -d "$TIDEL_PATH" ] && error_and_exit "Can't find $TIDEL_PATH. Please run tidel init"
+
+touch $TIDEL_SCRIPT_FILE
+chmod +x $TIDEL_SCRIPT_FILE
+
+while :
+do
+  read -p "> " COMMAND
+  [ "$COMMAND" == "save!" ] && break
+  echo $COMMAND >> $TIDEL_SCRIPT_FILE
+done
+
+info "Added new tidel script as $TIDEL_SCRIPT_NAME"

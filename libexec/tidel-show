@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source $TIDEL_ROOT/libexec/helpers
+
+[ -z "$1" ] && error_and_exit "Please specify script name"
+
+TIDEL_SCRIPT_NAME=$1
+TIDEL_SCRIPT_FILE=$TIDEL_SCRIPTS_PATH/$TIDEL_SCRIPT_NAME
+
+cat $TIDEL_SCRIPT_FILE

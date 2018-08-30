@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source $TIDEL_ROOT/libexec/helpers
+
+[ -d $TIDEL_PATH ] && warn_and_continue "Tidel is already initialized"
+
+mkdir -p $TIDEL_PATH
+mkdir -p $TIDEL_SCRIPTS_PATH

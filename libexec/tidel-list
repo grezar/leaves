@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source $TIDEL_ROOT/libexec/helpers
+
+ls -1 $TIDEL_SCRIPTS_PATH

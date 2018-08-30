@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+source $TIDEL_ROOT/libexec/helpers
+
+[ -z "$1" ] && error_and_exit "Please specify script name. You should run tidel list to list your tidel scripts"
+
+VIM_CLI=$(which vim)
+TIDEL_SCRIPT_NAME=$1
+TIDEL_SCRIPT_FILE=$TIDEL_SCRIPTS_PATH/$TIDEL_SCRIPT_NAME
+SCRIPT_FILE_BACKUP=$TIDEL_PATH/$TIDEL_SCRIPT_NAME.$RANDOM.tmp
+
+# Copy script file to compare after edit it
+cp $TIDEL_SCRIPT_FILE $SCRIPT_FILE_BACKUP
+
+# Remove backup file for sure
+trap "[ -f $SCRIPT_FILE_BACKUP ] && rm -f $SCRIPT_FILE_BACKUP" 0
+
+$VIM_CLI $TIDEL_SCRIPT_FILE
+
+if diff -q ${TIDEL_SCRIPT_FILE} ${SCRIPT_FILE_BACKUP} > /dev/null ; then
+  info "Nothing changed"
+else
+  info "$TIDEL_SCRIPT_NAME was successfully updated"
+fi

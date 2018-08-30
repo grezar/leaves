@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -e
+
+export TIDEL_ROOT=$(cd $(dirname $0)/.. ; pwd)
+export PATH="${TIDEL_ROOT}/libexec:$PATH"
+
+function abort() {
+  exit 1
+}
+
+command="$1"
+case "$command" in
+"" )
+  {
+    tidel-version
+    tidel-help
+  } | abort
+  ;;
+-v | --version )
+  exec tidel-version
+  ;;
+-h | --help )
+  exec tidel-help
+  ;;
+* )
+  command_path="$(command -v "tidel-${command}" || true)"
+  if [ -z "$command_path" ]; then
+    {
+      echo "No such command '$command'"
+      tidel-help
+    } | abort
+  fi
+  shift 1
+  exec "$command_path" "$@"
+  ;;
+esac

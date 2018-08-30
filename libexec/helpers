@@ -4,14 +4,14 @@ TIDEL_PATH="$HOME/.tidel"
 TIDEL_SCRIPTS_PATH="$TIDEL_PATH/scripts"
 
 function info() {
-  echo -e "\033[0;32m[INFO] ${1}\033[0;39m"
+  echo -e "\033[0;32mInfo: ${1}\033[0;39m"
 }
 
 function warn_and_continue() {
-  echo -e "\033[0;33m[WARN] ${1}\033[0;39m"
+  echo -e "\033[0;33mWarn: ${1}\033[0;39m"
 }
 
 function error_and_exit() {
-  echo -e "tidel: $(basename ${0}): \033[0;31m[ERROR] ${1}\033[0;39m" >&2
+  echo -e "\033[0;31mError: ${1}\033[0;39m" >&2
   exit 1
 }
